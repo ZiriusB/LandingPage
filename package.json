@@ -1,0 +1,18 @@
+{
+  "name": "2050-landingpage",
+  "version": "1.0.0",
+  "description": "demo: https://loranyousef.github.io/2050-LandingPage/\r ![Screenshot](https://raw.githubusercontent.com/loranYousef/2050-LandingPage/main/screenshot.png)",
+  "homepage": "https://github.com/loranYousef/2050-LandingPage#readme",
+  "bugs": {
+    "url": "https://github.com/loranYousef/2050-LandingPage/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loranYousef/2050-LandingPage.git"
+  },
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
