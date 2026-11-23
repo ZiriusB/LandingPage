@@ -1,0 +1,41 @@
+name: CI/CD Sitio Estático
+
+on:
+  push:
+    branches:
+      - main  # Se ejecuta cada vez que subes cambios a 'main'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # Fase de Integración Continua (CI): Validación
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código del repositorio
+        uses: actions/checkout@v5
+
+      - name: Validar sintaxis HTML
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: .
+
+      - name: Subir archivos listos para desplegar
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  # Fase de Despliegue Continuo (CD): Publicación
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
